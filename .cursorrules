@@ -1,0 +1,18 @@
+# Aspen App Development Rules
+
+## Context
+- Project: UI Slicing "Aspen Travel App" (Flutter).
+- Goal: Practical, clean UI, and maintainable code for university assignment.
+
+## Coding Standards
+- Widget Structure: Always use Row, Column, Expanded, Stack, and Positioned for layout.
+- Naming Convention: For Navbar components, always use lowercase "n" (e.g., navbar_item.dart).
+- Methodology: Focus on "Learning by Doing" and practical application.
+- Environment: The project MUST run locally. Do NOT suggest cloud tunneling (Quick Tunnel) or external hosting.
+
+## AI Instructions
+1. Zero-Inference: Do not assume complex state management (like Bloc/Redux) is needed. Use simple StatefulWidget/setState.
+2. Anti-Hallucination: If a library or package is not in pubspec.yaml, do not suggest code that uses it.
+3. Assets: Always refer to images in 'assets/images/'.
+4. UI Consistency: Match the design hierarchy from the Aspen Figma (Spacing, Padding, and Typography).
+5. Error Handling: Prioritize 'flutter clean' and local environment checks for debugging.
