@@ -24,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     // ===== MEDIAQUERY: responsif =====
     final screenHeight = MediaQuery.of(context).size.height;
-    final imageHeight  = screenHeight * 0.42;
+    final imageHeight  = screenHeight * 0.45;
 
     return Scaffold(
       backgroundColor: AppColors.white,
@@ -60,11 +60,11 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
 
-          // Layer 3: Content card di bawah (Positioned)
-          Positioned(
-            top: imageHeight - 24,
-            left: 0, right: 0, bottom: 0,
+          // Layer 3: Content card di bawah (Align)
+          Align(
+            alignment: Alignment.bottomCenter,
             child: Container(
+              height: screenHeight - imageHeight + 30,
               decoration: const BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.vertical(
@@ -77,7 +77,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                    // Nama + Favorite (Row)
+                    // Nama
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -89,28 +89,6 @@ class _DetailPageState extends State<DetailPage> {
                               fontSize: 22,
                               fontWeight: FontWeight.w800,
                               color: AppColors.dark,
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () =>
-                              setState(() => _isFavorite = !_isFavorite),
-                          child: Container(
-                            width: 40, height: 40,
-                            decoration: BoxDecoration(
-                              color: _isFavorite
-                                  ? AppColors.accent
-                                  : AppColors.greyLight,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              _isFavorite
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: _isFavorite
-                                  ? Colors.white
-                                  : AppColors.grey,
-                              size: 20,
                             ),
                           ),
                         ),
@@ -249,29 +227,31 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ),
 
-          // Layer 4: Show map button (Positioned kanan atas card)
+          // Layer 4: Floating Heart Icon di perbatasan
           Positioned(
-            top: imageHeight - 14,
+            top: imageHeight - 54,
             right: 24,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 14, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+            child: GestureDetector(
+              onTap: () => setState(() => _isFavorite = !_isFavorite),
+              child: Container(
+                width: 48, height: 48,
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  _isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: _isFavorite ? AppColors.accent : AppColors.grey,
+                  size: 24,
+                ),
               ),
-              child: const Text('Show map',
-                  style: TextStyle(
-                      fontSize: 12,
-                      color: AppColors.primary,
-                      fontWeight: FontWeight.w600)),
             ),
           ),
         ],
